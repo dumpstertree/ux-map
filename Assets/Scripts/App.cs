@@ -47,7 +47,10 @@ public class App : MonoBehaviour {
 			MapUI.Instance.Set( Map );
 		}
 
-		Player.Instance.transform.position = Vector3.zero;
+		if ( Player.Instance != null ) {
+			Player.Instance.transform.position = Vector3.zero;
+		}
+
 		MapUI.Instance?.Dismiss();
 	}
 	public void Load ( Map map, Place teleportLocation ) {
@@ -59,7 +62,10 @@ public class App : MonoBehaviour {
 			MapUI.Instance.Set( Map );
 		}
 
-		Player.Instance.Teleport( teleportLocation.Position );
+		if ( Player.Instance != null ) {
+			Player.Instance.Teleport( teleportLocation.Position );
+		}
+
 		MapUI.Instance.Dismiss();
 	}
 
@@ -91,7 +97,7 @@ public class App : MonoBehaviour {
 			var inst = Instantiate( _markerPrefab );
 			inst.Set( p );
 
-			inst.transform.position = p.Position + Vector3.up;
+			inst.transform.position = p.Position + Vector3.up * 2.5f;
 			_markers.Add( inst );
 		}
 	}

@@ -12,7 +12,7 @@ public class WSMarker : MonoBehaviour {
 
 	private void LateUpdate () {
 
-		transform.LookAt( FindObjectOfType<Camera>().transform.position );
+		transform.forward = Vector3.ProjectOnPlane( -( transform.position - Camera.main.transform.position ), Vector3.up );
 	}
 
 	[SerializeField] private SpriteRenderer _sprite = null;
